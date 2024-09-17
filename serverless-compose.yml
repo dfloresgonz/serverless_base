@@ -1,5 +1,5 @@
 # "org" ensures this Service is used with the correct Serverless Framework Access Key.
-org: smileduv1
+# org: smileduv1
 services:
   service1:
     path: ./services/service1

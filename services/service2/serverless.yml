@@ -6,9 +6,47 @@ provider:
   runtime: nodejs18.x
   stage: ${opt:stage, 'test'}
   region: us-east-2
+  profile: "${param:prof,null}"
+
+plugins:
+  - serverless-localstack
+
+custom:
+  stage: ${opt:stage, 'test'}
+  localstack:
+    stages:
+      - local
+    host: http://localhost
+    edgePort: 4566
+    autostart: false
+    lambda:
+      mountCode: true
+    docker:
+      sudo: False
+
+build:
+  esbuild:
+    bundle: true
+    minify: true
+
+package:
+  individually: true
+  patterns:
+    - '!./**'
+
 functions:
   functionC:
     handler: functionC/handler.main
     description: This is function C
+    architecture: arm64
+    package:
+      include:
+        - node_modules/**
+        - functionC/**
   functionD:
     handler: functionD/handler.main
+    architecture: arm64
+    package:
+      include:
+        - node_modules/**
+        - functionD/**

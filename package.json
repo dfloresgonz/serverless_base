@@ -19,7 +19,8 @@
       "**/**"
     ]
   },
-  "dependencies": {
-    "esbuild": "^0.23.1"
+  "devDependencies": {
+    "esbuild": "^0.23.1",
+    "serverless-localstack": "^1.2.1"
   }
 }
