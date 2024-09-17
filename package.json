@@ -1,0 +1,25 @@
+{
+  "name": "prueba-sls",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "serverless deploy --service=service1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "services/*/*"
+    ],
+    "nohoist": [
+      "**/**"
+    ]
+  },
+  "dependencies": {
+    "esbuild": "^0.23.1"
+  }
+}

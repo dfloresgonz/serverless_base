@@ -1,0 +1,17 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: smileduv1
+services:
+  service1:
+    path: ./services/service1
+  service2:
+    path: ./services/service2
+  service3:
+    path: ./services/service3
+
+outputs:
+  service1:
+    url: ${service1.outputs.ServiceEndpoint}
+  service2:
+    url: ${service2.outputs.ServiceEndpoint}
+  service3:
+    url: ${service3.outputs.ServiceEndpoint}

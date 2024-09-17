@@ -1,0 +1,14 @@
+service: service3
+# frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'test'}
+  region: us-east-2
+functions:
+  functionE:
+    handler: functionE/handler.main
+    description: This is function E
+  functionF:
+    handler: functioF/handler.main

@@ -1,0 +1,36 @@
+service: service1
+# frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  stage: ${opt:stage, 'test'}
+  region: us-east-2
+
+build:
+  esbuild:
+    bundle: true
+    minify: true
+
+package:
+  individually: true
+  patterns:
+    - '!./**'
+
+functions:
+  functionA:
+    handler: functionA/handler.main
+    description: This is function Aa
+    architecture: arm64
+    package:
+      include:
+        - node_modules/**
+        - functionA/**
+  functionB:
+    handler: functionB/handler.main
+    description: This is function Bb
+    architecture: arm64
+    package:
+      include:
+        - node_modules/**
+        - functionB/**
